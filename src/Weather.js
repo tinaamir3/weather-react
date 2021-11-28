@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 export default function Weather() {
   let weatherData = {
@@ -61,17 +62,23 @@ export default function Weather() {
         </div>
 
         <div className="col">
-          <i className="fas fa-wind fa-1x wind"></i> <br />
+          <i class="far fa-smile"></i> <br />
           Wind: <br />
           {weatherData.wind} km/h
         </div>
         <div className="col">
-          <i className="fas fa-water"></i> <br />
+          <i class="fas fa-tint"></i><br />
           Humidity:
           <br />
           {weatherData.humidity}%
         </div>
       </div>
+
+    <small className="coded">
+        Coded by Tina Amir-Ghasemi {""}
+    <a href="https://github.com/tinaamir3/weather-react" target="_blank" rel="noreferrer"> 
+ GitHub </a>
+    </small>
     </div>
   );
 }
