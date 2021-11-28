@@ -43,7 +43,7 @@ export default function Weather() {
       <h6>{weatherData.date}</h6>
       <h6>{weatherData.time}</h6>
       <h2>
-        <img src={weatherData.imgSrc} />
+        <img src={weatherData.imgSrc} alt="weather icon"/>
       </h2>
       <h3>{weatherData.temperature}</h3>
 
