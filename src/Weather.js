@@ -17,7 +17,7 @@ export default function Weather() {
 
   return (
     <div className="Weather">
-      <form className="mb-5">
+      <form className="mb-2">
         <div className="row">
           <div className="col-9">
             <input
@@ -50,7 +50,7 @@ export default function Weather() {
 
       <p className="celsius">°C</p>
 
-      <p>
+      <p className="feelsLike">
         Feels like: <strong>2</strong>°
       </p>
 
@@ -73,12 +73,6 @@ export default function Weather() {
           {weatherData.humidity}%
         </div>
       </div>
-
-    <small className="coded">
-        Coded by Tina Amir-Ghasemi {""}
-    <a href="https://github.com/tinaamir3/weather-react" target="_blank" rel="noreferrer"> 
- GitHub </a>
-    </small>
     </div>
   );
 }
