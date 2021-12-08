@@ -6,9 +6,17 @@ import axios from "axios";
 
 export default function Weather() {
   const[ready,setReady]=useState(false);
-  const[temperature, setTemperature]=useState(null);
+  const[weatherData, setweatherData]=useState({});
   function handleResponse(response){
-    setTemperature(response.data.main.temp);
+    console.log(response.data);
+    setweatherData({
+      temperature: response.data.main.temp,
+      wind: response.data.wind.speed,
+      city: response.data.name,
+      feels: response.data.main.feels_like,
+      humidity: response.data.main.humidity,
+    });
+    
   setReady(true);  
   }
 if (ready){
@@ -35,7 +43,7 @@ if (ready){
       </form>
 
       <h1>
-        Toronto
+        {weatherData.city}
         <br />
       </h1>
       <h6>November 23, 2021</h6>
@@ -44,39 +52,39 @@ if (ready){
         <img src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt="weather icon"/>
       </h2>
       <h3>
-          <span className="temperature">{Math.round(temperature)}</span>
+          <span className="temperature">{Math.round(weatherData.temperature)}</span>
           <span className="unit">°C</span>
           </h3>
 
 
       <p className="feelsLike">
-        Feels like: <strong>2°C</strong>
+        Feels like: <strong>{Math.round(weatherData.feels)}</strong>
       </p>
 
       <div className="row">
         <div className="col">
           <i className="fas fa-tint fa-1x prescipitation"></i> <br />
-          Prescipitation: 2mm
+          Prescipitation: 4mm
           <p class="presc"></p>
         </div>
 
         <div className="col">
           <i class="fas fa-wind fa-1x wind"></i> <br />
           Wind: <br />
-          23 km/h
+          {Math.round(weatherData.wind)} km/h
         </div>
         <div className="col">
           <i class="fas fa-water"></i><br />
           Humidity:
           <br />
-          80%
+          {weatherData.humidity}%
         </div>
       </div>
     </div>
   );
 } else {
   const apiKey = "1b8abfcfd13f6be4d6f095c6de05ba7f";
-  let city="Toronto";
+  let city="Tokyo";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 

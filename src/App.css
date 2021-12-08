@@ -45,7 +45,10 @@ div i {
   font-size: 20px;
 }
 .unit {
+  position: relative;
   font-size: 15px;
+  line-height: 1;
+  top: -8px;
 }
 .prescipitation {
   color: rgb(77, 165, 238);
