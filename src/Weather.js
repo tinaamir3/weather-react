@@ -1,20 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/font-awesome/css/font-awesome.min.css'; 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.css"; 
+import axios from "axios";
 
 export default function Weather() {
-  let weatherData = {
-    city: "Toronto",
-    date: "November 1st, 2021",
-    time: "21:59",
-    imgSrc: "https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png",
-    temperature: "17",
-    prescipitation: "0mm",
-    wind: "22",
-    humidity: "16"
-  };
-
+  const[ready,setReady]=useState(false);
+  const[temperature, setTemperature]=useState(null);
+  function handleResponse(response){
+    setTemperature(response.data.main.temp);
+  setReady(true);  
+  }
+if (ready){
   return (
     <div className="Weather">
       <form className="mb-2">
@@ -38,41 +35,51 @@ export default function Weather() {
       </form>
 
       <h1>
-        {weatherData.city}
+        Toronto
         <br />
       </h1>
-      <h6>{weatherData.date}</h6>
-      <h6>{weatherData.time}</h6>
+      <h6>November 23, 2021</h6>
+      <h6>23:23</h6>
       <h2>
-        <img src={weatherData.imgSrc} alt="weather icon"/>
+        <img src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt="weather icon"/>
       </h2>
-      <h3>{weatherData.temperature}</h3>
+      <h3>
+          <span className="temperature">{Math.round(temperature)}</span>
+          <span className="unit">°C</span>
+          </h3>
 
-      <p className="celsius">°C</p>
 
       <p className="feelsLike">
-        Feels like: <strong>2</strong>°
+        Feels like: <strong>2°C</strong>
       </p>
 
       <div className="row">
         <div className="col">
           <i className="fas fa-tint fa-1x prescipitation"></i> <br />
-          Prescipitation: {weatherData.prescipitation}
+          Prescipitation: 2mm
           <p class="presc"></p>
         </div>
 
         <div className="col">
-          <i class="far fa-smile"></i> <br />
+          <i class="fas fa-wind fa-1x wind"></i> <br />
           Wind: <br />
-          {weatherData.wind} km/h
+          23 km/h
         </div>
         <div className="col">
-          <i class="fas fa-tint"></i><br />
+          <i class="fas fa-water"></i><br />
           Humidity:
           <br />
-          {weatherData.humidity}%
+          80%
         </div>
       </div>
     </div>
   );
+} else {
+  const apiKey = "1b8abfcfd13f6be4d6f095c6de05ba7f";
+  let city="Toronto";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+
+    return "Loading...";
+  }
 }
