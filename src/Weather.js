@@ -5,12 +5,12 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import axios from "axios";
 import {WiHorizonAlt} from "react-icons/wi";
 import {WiHorizon} from "react-icons/wi";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   
   const[weatherData, setweatherData]=useState({ready:false});
   function handleResponse(response){
-    console.log(response.data);
     setweatherData({
       ready: true,
       temperature: response.data.main.temp,
@@ -20,8 +20,7 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       iconUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png",
       description: response.data.weather[0].description,
-      date: "November 23, 2021",
-      time: "17:45"
+      date: new Date(response.data.dt *1000),
     });
   }
 if (weatherData.ready){
@@ -51,8 +50,9 @@ if (weatherData.ready){
         {weatherData.city}
         <br />
       </h1>
-      <h6>{weatherData.date}</h6>
-      <h6>{weatherData.time}</h6>
+      <h6>
+        <FormattedDate date={weatherData.date} />
+        </h6>
       <h2>
         <img src={weatherData.iconUrl} alt={weatherData.description}/>
       </h2>
