@@ -3,13 +3,14 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.css"; 
 import axios from "axios";
-import {WiHorizonAlt} from "react-icons/wi";
-import {WiHorizon} from "react-icons/wi";
-import FormattedDate from "./FormattedDate";
+
+
+import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
   
   const[weatherData, setweatherData]=useState({ready:false});
+  const [city, setCity]=useState(props.defaultCity);
   function handleResponse(response){
     setweatherData({
       ready: true,
@@ -23,10 +24,22 @@ export default function Weather(props) {
       date: new Date(response.data.dt *1000),
     });
   }
+  function search(){
+const apiKey = "1b8abfcfd13f6be4d6f095c6de05ba7f";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+  function handleSubmit(event){
+    event.preventDefault();
+    search();
+  }
+  function handleCityChange(event){
+setCity(event.taget.value);
+  }
 if (weatherData.ready){
   return (
     <div className="Weather">
-      <form className="mb-2">
+      <form className="mb-2" onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-9">
             <input
@@ -34,6 +47,8 @@ if (weatherData.ready){
               placeholder="Type a city..."
               class="form-control"
               autocomplete="off"
+              autoFocus="on"
+              onChange={handleCityChange}
             />
           </div>
           <div className="col-3">
@@ -45,63 +60,13 @@ if (weatherData.ready){
           </div>
         </div>
       </form>
+      <WeatherInfo data={weatherData}/>
 
-      <h1>
-        {weatherData.city}
-        <br />
-      </h1>
-      <h6>
-        <FormattedDate date={weatherData.date} />
-        </h6>
-      <h2>
-        <img src={weatherData.iconUrl} alt={weatherData.description}/>
-      </h2>
-      <h3>
-          <span className="temperature">{Math.round(weatherData.temperature)}</span>
-          <span className="unit">°C</span>
-          </h3>
-
-
-      <p className="feelsLike">
-        Feels like: <strong>{Math.round(weatherData.feels)}</strong>°C
-      </p>
-<div>
-      <div className="row">
-        <div className="col-3 text-center">
-          <WiHorizonAlt size="2.5em" color="orangered"/> <br /> 
-           <span className="data">5am</span>
-        </div>
-
-        <div className="col-3 text-center">
-          <WiHorizon size="2.5em" color="orangered"/>
-          <br />
-        <span className="data">6pm</span>
-        </div>
-
-          
-        <div className="col-3 text-center">
-          <i class="fas fa-water humidity"></i><br />
-          <span className="data">Humidity:
-          <br />
-          {weatherData.humidity}%</span>
-        </div>
-
-        <div className="col-3 text-center">
-          <i class="fas fa-wind fa-1x wind"></i> <br />
-         <span className="data"> Wind: <br />
-          {Math.round(weatherData.wind)} km/h </span>
-          </div>
-         
-        </div>
-      </div>
+      
     </div>
   );
 } else {
-  const apiKey = "1b8abfcfd13f6be4d6f095c6de05ba7f";
-  
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+search();
     return "Loading...";
   }
 }
