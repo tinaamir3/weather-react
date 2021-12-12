@@ -43,9 +43,9 @@ p {
 }
 .unit {
   position: relative;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1;
-  top: -8px;
+  top: -11px;
 }
 div i {
   color: green;
