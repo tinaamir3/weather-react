@@ -1,8 +1,11 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
-import {WiHorizonAlt} from "react-icons/wi";
-import {WiHorizon} from "react-icons/wi";
+import Sunrise from "./Sunrise";
+import Sunset from "./Sunset";
 import WeatherTemperature from "./WeatherTemperature";
+import {WiStrongWind} from "react-icons/wi";
+import {WiHumidity} from "react-icons/wi";
+
 export default function WeatherInfo(props){
     return (
     <div className="WeatherInfo">
@@ -16,38 +19,32 @@ export default function WeatherInfo(props){
       <h2>
         <img src={props.data.iconUrl} alt={props.data.description}/>
       </h2>
-      <h3>
+      <h1>
           <WeatherTemperature celsius={props.data.temperature}/>
-          </h3>
+          </h1>
 
 
-      <p className="feelsLike">
-        Feels like: <strong>{Math.round(props.data.feels)}</strong>°C
-      </p>
+
 <div>
       <div className="row">
-        <div className="col-3 text-center">
-          <WiHorizonAlt size="2.5em" color="orangered"/> <br /> 
-           <span className="data">5am</span>
+        <div className="col-3 text-center"> 
+           <Sunrise sr={props.data.sunrise} />
         </div>
 
         <div className="col-3 text-center">
-          <WiHorizon size="2.5em" color="orangered"/>
-          <br />
-        <span className="data">6pm</span>
+        <Sunset ss={props.data.sunset} />
         </div>
 
           
         <div className="col-3 text-center">
-          <i class="fas fa-water humidity"></i><br />
-          <span className="data">Humidity:
-          <br />
+          <WiHumidity size="2.5em" color="blue"/><br />
+          <span className="data">
           {props.data.humidity}%</span>
         </div>
 
         <div className="col-3 text-center">
-          <i class="fas fa-wind fa-1x wind"></i> <br />
-         <span className="data"> Wind: <br />
+          <WiStrongWind size="2.5em" color="grey"/> <br />
+         <span className="data">
           {Math.round(props.data.wind)} km/h </span>
           </div>
          

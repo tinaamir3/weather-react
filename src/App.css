@@ -13,8 +13,7 @@
 }
 
 h1,
-h2,
-h3 {
+h2 {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 65px;
@@ -45,7 +44,7 @@ p {
   position: relative;
   font-size: 12px;
   line-height: 1;
-  top: -11px;
+  top: -19px;
 }
 div i {
   color: green;
@@ -67,9 +66,6 @@ div i {
   margin-left: 62px;
   font-size: 13px;
   color: rgb(80, 193, 238);
-}
-.feelsLike {
-  font-size: 14px;
 }
 .data {
   font-size: 10px;
