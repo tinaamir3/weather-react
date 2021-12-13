@@ -68,5 +68,6 @@ div i {
   color: rgb(80, 193, 238);
 }
 .data {
-  font-size: 10px;
+  font-size: 13px;
+  padding-bottom: 10px;
 }
