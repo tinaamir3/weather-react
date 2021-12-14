@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.css"; 
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   const[weatherData, setweatherData]=useState({ready:false});
@@ -13,6 +14,7 @@ export default function Weather(props) {
     console.log(response.data);
     setweatherData({
       ready: true,
+      coordinates: response.data.coord,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       city: response.data.name,
@@ -64,7 +66,7 @@ if (weatherData.ready){
         </div>
       </form>
       <WeatherInfo data={weatherData}/>
-
+<WeatherForecast coordinates={weatherData.coordinates}/>
       
     </div>
   );

@@ -3,7 +3,6 @@ import FormattedDate from "./FormattedDate";
 import Sunrise from "./Sunrise";
 import Sunset from "./Sunset";
 import WeatherTemperature from "./WeatherTemperature";
-import WeatherForecast from "./WeatherForecast";
 import {WiStrongWind} from "react-icons/wi";
 import {WiHumidity} from "react-icons/wi";
 
@@ -45,8 +44,6 @@ export default function WeatherInfo(props){
          <span className="data">
           {Math.round(props.data.wind)} km/h </span>
           </div>
-          <br />
-         <WeatherForecast />
         </div>
       </div>
       </div>
