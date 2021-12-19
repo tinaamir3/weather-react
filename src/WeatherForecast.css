@@ -4,6 +4,7 @@
 .WeatherForecast-day {
   font-size: 12px;
   padding-top: 20px;
+  padding-bottom: 7px;
 }
 .WeatherForecast-temp-max {
   font-size: 12px;

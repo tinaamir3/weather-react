@@ -5,6 +5,7 @@ import Sunset from "./Sunset";
 import WeatherTemperature from "./WeatherTemperature";
 import {WiStrongWind} from "react-icons/wi";
 import {WiHumidity} from "react-icons/wi";
+import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherInfo(props){
     return (
@@ -17,7 +18,7 @@ export default function WeatherInfo(props){
         {props.data.description}
         </h6>
       <h2>
-        <img src={props.data.iconUrl} alt={props.data.description}/>
+        <WeatherIcon code={props.data.icon} size={86}/>
       </h2>
       <h1>
           <WeatherTemperature celsius={props.data.temperature}/>
