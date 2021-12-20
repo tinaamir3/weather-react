@@ -35,13 +35,13 @@ export default function WeatherInfo(props){
 
           
         <div className="col-3 text-center">
-          <WiHumidity size="2.5em" color="blue"/><br />
+          <WiHumidity size="2.2em" color="#134293"/><br />
           <span className="data">
           {props.data.humidity}%</span>
         </div>
 
         <div className="col-3 text-center">
-          <WiStrongWind size="2.5em" color="grey"/> <br />
+          <WiStrongWind size="2.2em" color="grey"/> <br />
          <span className="data">
           {Math.round(props.data.wind)} km/h </span>
           </div>

@@ -14,7 +14,7 @@ export default function Sunrise(props) {
 
   return (
     <div>
-          <WiHorizon size="2.5em" color="orangered"/><span className="data">{hours}:{minutes}</span>
+          <WiHorizon size="2.2em" color="#ea874d"/><span className="data"><br />{hours}:{minutes}</span>
     </div>
   );
 }

@@ -2,15 +2,15 @@
   text-align: center;
 }
 .WeatherForecast-day {
-  font-size: 12px;
+  font-size: 16px;
   padding-top: 20px;
   padding-bottom: 7px;
 }
 .WeatherForecast-temp-max {
-  font-size: 12px;
+  font-size: 15px;
 }
 .WeatherForecast-temp-min {
   opacity: 0.6;
   margin-left: 5px;
-  font-size: 12px;
+  font-size: 15px;
 }

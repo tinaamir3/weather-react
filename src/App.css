@@ -5,17 +5,22 @@
   margin-top: 20px;
   margin-left: 60px;
   margin-bottom: 10px;
-
   max-width: 400px;
   padding: 20px;
   background: linear-gradient(#8ec5fc, #e0c3fc);
 }
 
-h1,
+h1 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 85px;
+  color: white;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 h2 {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 65px;
   color: white;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -36,10 +41,6 @@ h6 {
   font-size: 12px;
   line-height: 1;
   top: -19px;
-}
-div i {
-  color: green;
-  font-size: 15px;
 }
 
 .wind {
