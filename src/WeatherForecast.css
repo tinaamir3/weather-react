@@ -2,15 +2,18 @@
   text-align: center;
 }
 .WeatherForecast-day {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
   padding-top: 20px;
   padding-bottom: 7px;
 }
 .WeatherForecast-temp-max {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 15px;
+  font-weight: bolder;
 }
 .WeatherForecast-temp-min {
-  opacity: 0.6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-left: 5px;
   font-size: 15px;
 }

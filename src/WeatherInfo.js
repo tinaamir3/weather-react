@@ -13,16 +13,16 @@ export default function WeatherInfo(props){
     <h1>
         {props.data.city}
       </h1>
-      <h6>
-        <FormattedDate date={props.data.date} />
-        {props.data.description}
-        </h6>
+      <h2>
+        <small>Last Updated:</small><FormattedDate date={props.data.date} />
+        <br />{props.data.description}
+        </h2>
       <h2>
         <WeatherIcon code={props.data.icon} size={86}/>
       </h2>
-      <h1>
+      <h2 className="temp">
           <WeatherTemperature celsius={props.data.temperature}/>
-          </h1>
+          </h2>
 <div>
       <div className="row">
         <div className="col-3 text-center"> 

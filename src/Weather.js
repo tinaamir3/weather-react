@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.css"; 
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
@@ -61,6 +60,7 @@ if (weatherData.ready){
               type="submit"
               value="Search"
               className="btn btn-primary w-90"
+      
             />
           </div>
         </div>
